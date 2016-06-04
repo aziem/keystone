@@ -923,25 +923,25 @@ let dispatch = function
     rule "generated-types ml"
       ~dep:stubgen_ml_types
       ~prod:"ffi_generated_types.ml"
-      (fun _ _ -> Printf.printf "POO\n";
+      (fun _ _ -> 
          Cmd (S [P ("./" ^ stubgen_ml_types); Sh">>"; A"ffi_generated_types.ml"]));
 
     rule "generated ml"
       ~dep:stubgen
       ~prod:"ffi_generated.ml"
-      (fun _ _ -> Printf.printf "POO2\n";
+      (fun _ _ -> 
          Cmd(S[P ("./" ^ stubgen); A"-ml"; Sh">"; A"ffi_generated.ml"]));
 
     rule "generated-types c"
       ~dep:stubgen_types
       ~prod:"ffi_ml_types_stubgen.c"
-      (fun _ _ -> Printf.printf "POO3\n";
+      (fun _ _ -> 
          Cmd (S [P ("./" ^ stubgen_types); Sh">"; A"ffi_ml_types_stubgen.c"]));
 
     rule "generated-types exe"
       ~dep:"ffi_ml_types_stubgen.c"
       ~prod:stubgen_ml_types
-      (fun _ _ -> Printf.printf "POO4\n";
+      (fun _ _ -> 
          let env = BaseEnvLight.load () in
          let cc = BaseEnvLight.var_get "bytecomp_c_compiler" env in
          let stdlib = BaseEnvLight.var_get "standard_library" env in
@@ -954,7 +954,7 @@ let dispatch = function
     rule "generated c"
       ~dep:stubgen
       ~prod:"ffi_generated_stubs.c"
-      (fun _ _ -> Printf.printf "POO5\n";
+      (fun _ _ -> 
          Cmd(S[P ("./" ^ stubgen); A"-c"; Sh">"; A"ffi_generated_stubs.c"]));
 
     flag ["c"; "compile"] & S[A"-I"; A"lib"; A"-package"; A"ctypes"; A"-package"; A"ctypes.stubs"]
