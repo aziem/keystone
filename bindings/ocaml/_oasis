@@ -14,9 +14,7 @@ Library keystone
   CSources: ffi_generated_stubs.c
   CCLib: -lkeystone
   CCOpt:            -I $pkg_ctypes_stubs
-  ByteOpt:          -warn-error +1..45
-  NativeOpt:        -warn-error +1..45
-  BuildDepends:     keystone_bindings
+  BuildDepends:     keystone_bindings, ctypes
   CompiledObject: native
 
 Library keystone_bindings
@@ -24,8 +22,6 @@ Library keystone_bindings
   Path: .
   Modules:	Ffi_bindings
   CCLib: -lkeystone
-  ByteOpt:          -warn-error +1..45
-  NativeOpt:        -warn-error +1..45
   BuildDepends:    ctypes.stubs, ctypes.foreign
   CompiledObjecT: native
 
@@ -33,8 +29,6 @@ Executable ffi_types_stubgen
   Install:        false
   Path:           .
   MainIs:         ffi_types_stubgen.ml
-  ByteOpt:        -warn-error +1..45
-  NativeOpt:      -warn-error +1..45
   BuildDepends:   keystone_bindings
   CompiledObject : native  
 
@@ -42,8 +36,6 @@ Executable ffi_stubgen
   Install: false
   Path: .
   MainIs: ffi_stubgen.ml
-  ByteOpt:        -warn-error +1..45
-  NativeOpt:      -warn-error +1..45
   BuildDepends:   keystone_bindings
   CompiledObject : native  
 
