@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: f9ef4ada91928ee1a066da558e85b624) *)
+(* DO NOT EDIT (digest: 4be5454c1fd1ab05cf70b1ee1f6c7b2f) *)
 module OASISGettext = struct
 (* # 22 "src/oasis/OASISGettext.ml" *)
 
@@ -776,43 +776,6 @@ let package_default =
             [(OASISExpr.EBool true, S [A "-cclib"; A "-lkeystone"])]);
           (["oasis_library_keystone_bindings_cclib"; "ocamlmklib"; "c"],
             [(OASISExpr.EBool true, S [A "-lkeystone"])]);
-          (["oasis_library_keystone_bindings_byte"; "ocaml"; "link"; "byte"],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_library_keystone_bindings_native";
-              "ocaml";
-              "link";
-              "native"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_library_keystone_bindings_byte";
-              "ocaml";
-              "ocamldep";
-              "byte"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_library_keystone_bindings_native";
-              "ocaml";
-              "ocamldep";
-              "native"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_library_keystone_bindings_byte";
-              "ocaml";
-              "compile";
-              "byte"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_library_keystone_bindings_native";
-              "ocaml";
-              "compile";
-              "native"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
           (["oasis_library_keystone_ccopt"; "compile"],
             [
                (OASISExpr.EBool true,
@@ -822,82 +785,6 @@ let package_default =
             [(OASISExpr.EBool true, S [A "-cclib"; A "-lkeystone"])]);
           (["oasis_library_keystone_cclib"; "ocamlmklib"; "c"],
             [(OASISExpr.EBool true, S [A "-lkeystone"])]);
-          (["oasis_library_keystone_byte"; "ocaml"; "link"; "byte"],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          (["oasis_library_keystone_native"; "ocaml"; "link"; "native"],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          (["oasis_library_keystone_byte"; "ocaml"; "ocamldep"; "byte"],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          (["oasis_library_keystone_native"; "ocaml"; "ocamldep"; "native"],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          (["oasis_library_keystone_byte"; "ocaml"; "compile"; "byte"],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          (["oasis_library_keystone_native"; "ocaml"; "compile"; "native"],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_executable_ffi_types_stubgen_byte";
-              "ocaml";
-              "link";
-              "byte"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_executable_ffi_types_stubgen_native";
-              "ocaml";
-              "link";
-              "native"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_executable_ffi_types_stubgen_byte";
-              "ocaml";
-              "ocamldep";
-              "byte"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_executable_ffi_types_stubgen_native";
-              "ocaml";
-              "ocamldep";
-              "native"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_executable_ffi_types_stubgen_byte";
-              "ocaml";
-              "compile";
-              "byte"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_executable_ffi_types_stubgen_native";
-              "ocaml";
-              "compile";
-              "native"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          (["oasis_executable_ffi_stubgen_byte"; "ocaml"; "link"; "byte"],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          (["oasis_executable_ffi_stubgen_native"; "ocaml"; "link"; "native"],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          (["oasis_executable_ffi_stubgen_byte"; "ocaml"; "ocamldep"; "byte"],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_executable_ffi_stubgen_native";
-              "ocaml";
-              "ocamldep";
-              "native"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          (["oasis_executable_ffi_stubgen_byte"; "ocaml"; "compile"; "byte"],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
-          ([
-              "oasis_executable_ffi_stubgen_native";
-              "ocaml";
-              "compile";
-              "native"
-           ],
-            [(OASISExpr.EBool true, S [A "-warn-error"; A "+1..45"])]);
           (["oasis_executable_main_cclib"; "link"],
             [(OASISExpr.EBool true, S [A "-cclib"; A "-lkeystone"])]);
           (["oasis_executable_main_cclib"; "ocamlmklib"; "c"],
@@ -911,7 +798,7 @@ let conf = {MyOCamlbuildFindlib.no_automatic_syntax = false}
 
 let dispatch_default = MyOCamlbuildBase.dispatch_default conf package_default;;
 
-# 915 "myocamlbuild.ml"
+# 802 "myocamlbuild.ml"
 (* OASIS_STOP *)
 Ocamlbuild_plugin.dispatch dispatch_default;;
 let dispatch = function
