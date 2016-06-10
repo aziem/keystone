@@ -1,15 +1,11 @@
-(*module B = Ffi_bindings.Bindings(Ffi_generated) *)
-module T = Ffi_bindings.Types(Ffi_generated_types)
-
+module B = Ffi_bindings.Bindings(Ffi_generated)
+module KSTypes = B.T
 open Ctypes
 open Foreign
 
+open KSTypes
+open B
 
-type ks_engine
-type ks_t = ks_engine structure ptr
-
-let ks_engine : ks_engine structure typ = structure "ks_engine"
-                      
 type asm_result =
   | ASMSuccess of char list
   | ASMError of string
@@ -19,25 +15,7 @@ type ks_open_result =
   | KSOpenSucc of ks_t
   | KSOpenError of string
 
-let ks_arch_supported_ = foreign "ks_arch_supported" (T.ks_arch @-> returning bool)
-
-let ks_version_ = foreign "ks_version" (ptr int @-> ptr int @-> returning int)
-                                                   
-let ks_open_ = foreign "ks_open" (T.ks_arch @-> T.ks_mode @-> (ptr (ptr ks_engine)) @-> returning T.ks_err)
-                       
-let ks_close_ = foreign "ks_close" (ptr ks_engine @-> returning int64_t) 
-
-let ks_err_ = foreign "ks_errno" (ptr ks_engine @-> returning T.ks_err)
-
-let ks_option_ = foreign "ks_option" (ptr ks_engine @-> T.ks_opt_type @-> T.ks_opt_value @-> returning T.ks_err)
-
-let ks_strerror_ = foreign "ks_strerror" (T.ks_err @-> returning (ptr char))
-
-let ks_free_ = foreign "ks_free" (ptr void @-> returning void) 
-
-let ks_asm_ = foreign "ks_asm" (ptr ks_engine @-> string @-> int64_t @-> ptr (ptr char) @-> ptr size_t @-> ptr size_t @-> returning int)
- 
-
+                     
 let ks_arch_supported arch =
   ks_arch_supported_ arch
 

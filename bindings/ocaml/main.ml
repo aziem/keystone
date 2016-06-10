@@ -1,5 +1,5 @@
 open Keystone
-open Keystone.T
+open Keystone.KSTypes
 
 let _ =
   match (ks_open KS_ARCH_X86 KS_MODE_64) with

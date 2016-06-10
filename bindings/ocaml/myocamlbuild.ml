@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: 4be5454c1fd1ab05cf70b1ee1f6c7b2f) *)
+(* DO NOT EDIT (digest: e7935b4d8ff590fece9a85b7a94cc53e) *)
 module OASISGettext = struct
 (* # 22 "src/oasis/OASISGettext.ml" *)
 
@@ -768,10 +768,18 @@ open Ocamlbuild_plugin;;
 let package_default =
   {
      MyOCamlbuildBase.lib_ocaml =
-       [("keystone_bindings", [], []); ("keystone", [], [])];
+       [
+          ("keystone_types", [], []);
+          ("keystone_bindings", [], []);
+          ("keystone", [], [])
+       ];
      lib_c = [("keystone", ".", [])];
      flags =
        [
+          (["oasis_library_keystone_types_cclib"; "link"],
+            [(OASISExpr.EBool true, S [A "-cclib"; A "-lkeystone"])]);
+          (["oasis_library_keystone_types_cclib"; "ocamlmklib"; "c"],
+            [(OASISExpr.EBool true, S [A "-lkeystone"])]);
           (["oasis_library_keystone_bindings_cclib"; "link"],
             [(OASISExpr.EBool true, S [A "-cclib"; A "-lkeystone"])]);
           (["oasis_library_keystone_bindings_cclib"; "ocamlmklib"; "c"],
@@ -798,7 +806,7 @@ let conf = {MyOCamlbuildFindlib.no_automatic_syntax = false}
 
 let dispatch_default = MyOCamlbuildBase.dispatch_default conf package_default;;
 
-# 802 "myocamlbuild.ml"
+# 810 "myocamlbuild.ml"
 (* OASIS_STOP *)
 Ocamlbuild_plugin.dispatch dispatch_default;;
 let dispatch = function
