@@ -381,6 +381,107 @@ module Types (F: Cstubs.Types.TYPE) =
                                  ]
       end
 
+    module HEXAGON =
+      struct
+        type ks_err_asm_hexagon =
+          | KS_ERR_ASM_HEXAGON_INVALIDOPERAND
+          | KS_ERR_ASM_HEXAGON_MISSINGFEATURE
+          | KS_ERR_ASM_HEXAGON_MNEMONICFAIL
+
+
+        let ks_err_asm_hexagon_invalidoperand = constant "KS_ERR_ASM_HEXAGON_INVALIDOPERAND" int64_t
+        let ks_err_asm_hexagon_missingfeature = constant "KS_ERR_ASM_HEXAGON_MISSINGFEATURE" int64_t
+        let ks_err_asm_hexagon_mnemonicfail = constant "KS_ERR_ASM_HEXAGON_MNEMONICFAIL" int64_t
+
+        let ks_err_asm_hexagon = enum "ks_err_asm_hexagon" [
+                                   KS_ERR_ASM_HEXAGON_INVALIDOPERAND, ks_err_asm_hexagon_invalidoperand;
+                                   KS_ERR_ASM_HEXAGON_MISSINGFEATURE, ks_err_asm_hexagon_missingfeature;
+                                   KS_ERR_ASM_HEXAGON_MNEMONICFAIL, ks_err_asm_hexagon_mnemonicfail;
+                                 ]
+      end
+
+
+    module MIPS =
+      struct
+        type ks_err_asm_mips =
+          | KS_ERR_ASM_MIPS_INVALIDOPERAND
+          | KS_ERR_ASM_MIPS_MISSINGFEATURE
+          | KS_ERR_ASM_MIPS_MNEMONICFAIL
+
+
+        let ks_err_asm_mips_invalidoperand = constant "KS_ERR_ASM_MIPS_INVALIDOPERAND" int64_t
+        let ks_err_asm_mips_missingfeature = constant "KS_ERR_ASM_MIPS_MISSINGFEATURE" int64_t
+        let ks_err_asm_mips_mnemonicfail = constant "KS_ERR_ASM_MIPS_MNEMONICFAIL" int64_t
+
+        let ks_err_asm_mips = enum "ks_err_asm_mips" [
+                                   KS_ERR_ASM_MIPS_INVALIDOPERAND, ks_err_asm_mips_invalidoperand;
+                                   KS_ERR_ASM_MIPS_MISSINGFEATURE, ks_err_asm_mips_missingfeature;
+                                   KS_ERR_ASM_MIPS_MNEMONICFAIL, ks_err_asm_mips_mnemonicfail;
+                                 ]
+      end
+
+
+        
+    module PPC =
+      struct
+        type ks_err_asm_ppc =
+          | KS_ERR_ASM_PPC_INVALIDOPERAND
+          | KS_ERR_ASM_PPC_MISSINGFEATURE
+          | KS_ERR_ASM_PPC_MNEMONICFAIL
+
+
+        let ks_err_asm_ppc_invalidoperand = constant "KS_ERR_ASM_PPC_INVALIDOPERAND" int64_t
+        let ks_err_asm_ppc_missingfeature = constant "KS_ERR_ASM_PPC_MISSINGFEATURE" int64_t
+        let ks_err_asm_ppc_mnemonicfail = constant "KS_ERR_ASM_PPC_MNEMONICFAIL" int64_t
+
+        let ks_err_asm_ppc = enum "ks_err_asm_ppc" [
+                                   KS_ERR_ASM_PPC_INVALIDOPERAND, ks_err_asm_ppc_invalidoperand;
+                                   KS_ERR_ASM_PPC_MISSINGFEATURE, ks_err_asm_ppc_missingfeature;
+                                   KS_ERR_ASM_PPC_MNEMONICFAIL, ks_err_asm_ppc_mnemonicfail;
+                                 ]
+      end
+
+        
+    module SPARC =
+      struct
+        type ks_err_asm_sparc =
+          | KS_ERR_ASM_SPARC_INVALIDOPERAND
+          | KS_ERR_ASM_SPARC_MISSINGFEATURE
+          | KS_ERR_ASM_SPARC_MNEMONICFAIL
+
+
+        let ks_err_asm_sparc_invalidoperand = constant "KS_ERR_ASM_SPARC_INVALIDOPERAND" int64_t
+        let ks_err_asm_sparc_missingfeature = constant "KS_ERR_ASM_SPARC_MISSINGFEATURE" int64_t
+        let ks_err_asm_sparc_mnemonicfail = constant "KS_ERR_ASM_SPARC_MNEMONICFAIL" int64_t
+
+        let ks_err_asm_sparc = enum "ks_err_asm_sparc" [
+                                   KS_ERR_ASM_SPARC_INVALIDOPERAND, ks_err_asm_sparc_invalidoperand;
+                                   KS_ERR_ASM_SPARC_MISSINGFEATURE, ks_err_asm_sparc_missingfeature;
+                                   KS_ERR_ASM_SPARC_MNEMONICFAIL, ks_err_asm_sparc_mnemonicfail;
+                                 ]
+      end
+
+    module SYSTEMZ =
+      struct
+        type ks_err_asm_systemz =
+          | KS_ERR_ASM_SYSTEMZ_INVALIDOPERAND
+          | KS_ERR_ASM_SYSTEMZ_MISSINGFEATURE
+          | KS_ERR_ASM_SYSTEMZ_MNEMONICFAIL
+
+
+        let ks_err_asm_systemz_invalidoperand = constant "KS_ERR_ASM_SYSTEMZ_INVALIDOPERAND" int64_t
+        let ks_err_asm_systemz_missingfeature = constant "KS_ERR_ASM_SYSTEMZ_MISSINGFEATURE" int64_t
+        let ks_err_asm_systemz_mnemonicfail = constant "KS_ERR_ASM_SYSTEMZ_MNEMONICFAIL" int64_t
+
+        let ks_err_asm_systemz = enum "ks_err_asm_systemz" [
+                                   KS_ERR_ASM_SYSTEMZ_INVALIDOPERAND, ks_err_asm_systemz_invalidoperand;
+                                   KS_ERR_ASM_SYSTEMZ_MISSINGFEATURE, ks_err_asm_systemz_missingfeature;
+                                   KS_ERR_ASM_SYSTEMZ_MNEMONICFAIL, ks_err_asm_systemz_mnemonicfail;
+                                 ]
+      end
+
+
+
 
 
 
