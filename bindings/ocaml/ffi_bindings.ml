@@ -23,6 +23,6 @@ module Bindings (F: Cstubs.FOREIGN)  =
                                
     let ks_free_ = foreign "ks_free" (ptr void @-> returning void) 
                            
-    let ks_asm_ = foreign "ks_asm" (ptr T.ks_engine @-> string @-> int64_t @-> ptr (ptr char) @-> ptr size_t @-> ptr size_t @-> returning int)
- 
+    let ks_asm_ = foreign "ks_asm" (ptr T.ks_engine @-> string @-> int64_t @-> ptr (ptr uchar) @-> ptr size_t @-> ptr size_t @-> returning int)
+                          
   end

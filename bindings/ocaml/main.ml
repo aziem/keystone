@@ -6,7 +6,7 @@ let _ =
   | KSOpenSucc engine ->
      begin
        match (ks_asm engine "add eax, ecx" 0) with
-       | ASMSuccess asm -> ignore (ks_close engine); List.iter (fun c -> Printf.printf "%02x" (int_of_char c)) asm
+       | ASMSuccess asm -> ignore (ks_close engine); Printf.printf "Ans: %s\n" asm
        | ASMError s -> Printf.printf "ERROR: %s\n" s; ignore (ks_close engine)
      end
   | KSOpenError e -> Printf.printf "ERROR: %s\n"  e 
