@@ -14,7 +14,7 @@ Library keystone
   CSources: ffi_generated_stubs.c
   CCLib: -lkeystone
   CCOpt:            -I $pkg_ctypes_stubs
-  BuildDepends:     keystone_bindings, ctypes
+  BuildDepends:     keystone_bindings, ctypes, uchar
   CompiledObject: native
 
 Library keystone_types
@@ -47,11 +47,11 @@ Executable ffi_stubgen
   BuildDepends:   keystone_bindings, ffi_types_stubgen
   CompiledObject : native  
 
-Executable main
+Executable test_bindings
   Install: false
   CCLib: -lkeystone
   Path: .
-  MainIs: main.ml
+  MainIs: test_bindings.ml
   BuildDepends: keystone
   CompiledObject: native
   

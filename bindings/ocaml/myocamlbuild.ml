@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: e7935b4d8ff590fece9a85b7a94cc53e) *)
+(* DO NOT EDIT (digest: 5b5a3e922a5ae1a5b1e73f399489eda5) *)
 module OASISGettext = struct
 (* # 22 "src/oasis/OASISGettext.ml" *)
 
@@ -793,9 +793,9 @@ let package_default =
             [(OASISExpr.EBool true, S [A "-cclib"; A "-lkeystone"])]);
           (["oasis_library_keystone_cclib"; "ocamlmklib"; "c"],
             [(OASISExpr.EBool true, S [A "-lkeystone"])]);
-          (["oasis_executable_main_cclib"; "link"],
+          (["oasis_executable_test_bindings_cclib"; "link"],
             [(OASISExpr.EBool true, S [A "-cclib"; A "-lkeystone"])]);
-          (["oasis_executable_main_cclib"; "ocamlmklib"; "c"],
+          (["oasis_executable_test_bindings_cclib"; "ocamlmklib"; "c"],
             [(OASISExpr.EBool true, S [A "-lkeystone"])])
        ];
      includes = []
