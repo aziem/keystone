@@ -9,8 +9,8 @@ let test_ks arch mode ?(syntax=KS_OPT_SYNTAX_INTEL) ?(endian=KS_MODE_LITTLE_ENDI
      begin
        let opt = ks_option engine KS_OPT_SYNTAX syntax in
        match (ks_asm engine asm 0) with
-       | ASMSuccess asm ->
-          Printf.printf "Assembled: %s\n" (asm_array_to_string asm);
+       | ASMSuccess(asm',encsize,stat) ->
+          Printf.printf "%s = %s\nAssembled: %i bytes, %i statements\n" asm (asm_array_to_string asm') encsize stat;
           ignore(ks_close engine)
 
        | ASMError s -> Printf.printf "ERROR: failed on ks_asm with: %s\n" s
@@ -22,7 +22,7 @@ let test_ks arch mode ?(syntax=KS_OPT_SYNTAX_INTEL) ?(endian=KS_MODE_LITTLE_ENDI
 let _ =
   test_ks KS_ARCH_X86 KS_MODE_16 "add eax, ecx";
   test_ks KS_ARCH_X86 KS_MODE_32 "add eax, ecx";
-  test_ks KS_ARCH_X86 KS_MODE_64 "add eax, ecx";
+  test_ks KS_ARCH_X86 KS_MODE_64 "add rax, rcx";
   test_ks KS_ARCH_X86 KS_MODE_32 ~syntax:KS_OPT_SYNTAX_ATT "add %ecx, %eax";
   test_ks KS_ARCH_X86 KS_MODE_64 ~syntax:KS_OPT_SYNTAX_ATT "add %rcx, %rax";
 

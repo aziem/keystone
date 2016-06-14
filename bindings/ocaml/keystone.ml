@@ -7,7 +7,7 @@ open KSTypes
 open B
 
 type asm_result =
-  | ASMSuccess of int array
+  | ASMSuccess of (int array) * int * int
   | ASMError of string
     
  
@@ -71,7 +71,7 @@ let ks_asm engine str addr =
       let f'' = Array.of_list f' in
       let c' = Array.map (fun c -> Unsigned.UChar.to_int c) f'' in
       ks_free_ (to_voidp (!@ encoding));
-      ASMSuccess c'
+      ASMSuccess(c', (Unsigned.Size_t.to_int (!@ encoding_size)), (Unsigned.Size_t.to_int (!@ stat_count)))
     end
   | _ -> let err = ks_errno engine in
          ASMError(ks_strerror err)
