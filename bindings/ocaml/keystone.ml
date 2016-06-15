@@ -9,31 +9,29 @@ open B
 type asm_result =
   | ASMSuccess of (int array) * int * int
   | ASMError of string
-    
  
 type ks_open_result =
   | KSOpenSucc of ks_struct structure ptr
   | KSOpenError of string
 
-                     
 let ks_arch_supported arch =
   ks_arch_supported_ arch
 
-let ks_version i j =
-  ks_version_ (allocate int i) (allocate int j)
+let ks_version major minor =
+  let major = Unsigned.UInt.of_int major in
+  let minor = Unsigned.UInt.of_int minor in
+  let u = ks_version_ (allocate uint major) (allocate uint minor) in
+  Unsigned.UInt.to_int u
+                      
 
-
+(* TODO: better handling of error value *)
 let ks_option engine opttype optvalue =
   match opttype with
-  | KS_OPT_SYNTAX ->
-     let e = ks_option_ engine KS_OPT_SYNTAX optvalue in
-     e
+  | KS_OPT_SYNTAX -> ks_option_ engine KS_OPT_SYNTAX optvalue 
                         
 let ks_strerror err =
-  coerce (ptr char) string (ks_strerror_ err) 
+  ks_strerror_ err
 
-let temp = Ffi_generated_types.constant "KS_MODE_BIG_ENDIAN" int64_t
-                                        
 let ks_open arch ?(endian=KS_MODE_LITTLE_ENDIAN) mode =
   let mode =
     match endian with
@@ -78,4 +76,4 @@ let ks_asm engine str addr =
          
           
 let asm_array_to_string a =
-  Array.fold_left (fun str c -> let t = Printf.sprintf "%x " c in str^t) "" a 
+  Array.fold_left (fun str c -> let t = Printf.sprintf "%02x " c in str^t) "" a 

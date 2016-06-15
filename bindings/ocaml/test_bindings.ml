@@ -1,16 +1,14 @@
 open Keystone
 open Keystone.KSTypes
 
-
-
 let test_ks arch mode ?(syntax=KS_OPT_SYNTAX_INTEL) ?(endian=KS_MODE_LITTLE_ENDIAN) asm  =
   match (ks_open arch ~endian:endian mode) with
   | KSOpenSucc engine ->
      begin
-       let opt = ks_option engine KS_OPT_SYNTAX syntax in
+       ignore(ks_option engine KS_OPT_SYNTAX syntax);
        match (ks_asm engine asm 0) with
        | ASMSuccess(asm',encsize,stat) ->
-          Printf.printf "%s = %s\nAssembled: %i bytes, %i statements\n" asm (asm_array_to_string asm') encsize stat;
+          Printf.printf "%s = %s\nAssembled: %i bytes, %i statements\n \n" asm (asm_array_to_string asm') encsize stat;
           ignore(ks_close engine)
 
        | ASMError s -> Printf.printf "ERROR: failed on ks_asm with: %s\n" s
