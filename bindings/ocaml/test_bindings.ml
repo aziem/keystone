@@ -1,5 +1,5 @@
 open Keystone
-open Keystone.KSTypes
+open Keystone.Types
 
 let test_ks arch mode ?(syntax=KS_OPT_SYNTAX_INTEL) ?(endian=KS_MODE_LITTLE_ENDIAN) asm  =
   match (ks_open arch ~endian:endian mode) with

@@ -1,11 +1,17 @@
 module B = Ffi_bindings.Bindings(Ffi_generated)
-module KSTypes = B.T
+module Types = B.T
 open Ctypes
 open Foreign
 
-open KSTypes
+open Types
 open B
 
+
+(** Result of assembling instructions Succesful assembly results in
+    ASMSuccess with an int array contained the assembled instructions,
+    the size of the array of instructions, and a the number of
+    instructions encoded.
+ *)
 type asm_result =
   | ASMSuccess of (int array) * int * int
   | ASMError of string
