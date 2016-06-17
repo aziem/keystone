@@ -1,11 +1,12 @@
 open Keystone
-open Keystone.Types
 
-let test_ks arch mode ?(syntax=KS_OPT_SYNTAX_INTEL) ?(endian=KS_MODE_LITTLE_ENDIAN) asm  =
+module T = Keystone.Types 
+
+let test_ks arch mode ?(syntax=T.KS_OPT_SYNTAX_INTEL) ?(endian=T.KS_MODE_LITTLE_ENDIAN) asm  =
   match (ks_open arch ~endian:endian mode) with
   | KSOpenSucc engine ->
      begin
-       ignore(ks_option engine KS_OPT_SYNTAX syntax);
+       ignore(ks_option engine T.KS_OPT_SYNTAX syntax);
        match (ks_asm engine asm 0) with
        | ASMSuccess(asm',encsize,stat) ->
           Printf.printf "%s = %s\nAssembled: %i bytes, %i statements\n \n" asm (asm_array_to_string asm') encsize stat;
@@ -18,17 +19,17 @@ let test_ks arch mode ?(syntax=KS_OPT_SYNTAX_INTEL) ?(endian=KS_MODE_LITTLE_ENDI
 
   
 let _ =
-  test_ks KS_ARCH_X86 KS_MODE_16 "add eax, ecx";
-  test_ks KS_ARCH_X86 KS_MODE_32 "add eax, ecx";
-  test_ks KS_ARCH_X86 KS_MODE_64 "add rax, rcx";
-  test_ks KS_ARCH_X86 KS_MODE_32 ~syntax:KS_OPT_SYNTAX_ATT "add %ecx, %eax";
-  test_ks KS_ARCH_X86 KS_MODE_64 ~syntax:KS_OPT_SYNTAX_ATT "add %rcx, %rax";
+  test_ks T.KS_ARCH_X86 T.KS_MODE_16 "add eax, ecx";
+  test_ks T.KS_ARCH_X86 T.KS_MODE_32 "add eax, ecx";
+  test_ks T.KS_ARCH_X86 T.KS_MODE_64 "add rax, rcx";
+  test_ks T.KS_ARCH_X86 T.KS_MODE_32 ~syntax:T.KS_OPT_SYNTAX_ATT "add %ecx, %eax";
+  test_ks T.KS_ARCH_X86 T.KS_MODE_64 ~syntax:T.KS_OPT_SYNTAX_ATT "add %rcx, %rax";
 
-  test_ks KS_ARCH_ARM KS_MODE_ARM  "sub r1, r2, r5";
-  test_ks KS_ARCH_ARM KS_MODE_ARM  "sub r1, r2, r5";
-  test_ks KS_ARCH_ARM KS_MODE_ARM ~endian:KS_MODE_BIG_ENDIAN "sub r1, r2, r5";
-  test_ks KS_ARCH_ARM KS_MODE_THUMB "movs r4, #0xf0";
-  test_ks KS_ARCH_ARM KS_MODE_THUMB ~endian:KS_MODE_BIG_ENDIAN "movs r4, #0xf0";
+  test_ks T.KS_ARCH_ARM T.KS_MODE_ARM  "sub r1, r2, r5";
+  test_ks T.KS_ARCH_ARM T.KS_MODE_ARM  "sub r1, r2, r5";
+  test_ks T.KS_ARCH_ARM T.KS_MODE_ARM ~endian:T.KS_MODE_BIG_ENDIAN "sub r1, r2, r5";
+  test_ks T.KS_ARCH_ARM T.KS_MODE_THUMB "movs r4, #0xf0";
+  test_ks T.KS_ARCH_ARM T.KS_MODE_THUMB ~endian:T.KS_MODE_BIG_ENDIAN "movs r4, #0xf0";
 
   test_ks KS_ARCH_ARM64 KS_MODE_LITTLE_ENDIAN "ldr w1, [sp, #0x8]";
 

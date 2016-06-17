@@ -33,6 +33,13 @@ Library keystone_bindings
   BuildDepends:    ctypes.stubs, ctypes.foreign, keystone_types
   CompiledObject: native
 
+Document keystone
+  Type: ocamlbuild (0.4)
+  BuildTools : ocamldoc
+  Title: API reference for Keystone
+  XOCamlBuildPath: .
+  XOCamlBuildlibraries: keystone
+
 Executable ffi_types_stubgen
   Install: false
   Path: .
