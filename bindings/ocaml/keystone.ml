@@ -42,7 +42,7 @@ type asm_result =
   | ASMError of string
 
 type ks_open_result =
-  | KSOpenSucc of Types.ks_struct structure ptr
+  | KSOpenSucc of Types.ks_t
   | KSOpenError of string
 
 
