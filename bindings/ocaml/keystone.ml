@@ -1,41 +1,8 @@
-module B = Ffi_bindings.Bindings(Ffi_generated)
-(*module Types = B.T *)
 open Ctypes
 open Foreign
 
-
- 
-
-
-  
-
-
-
-
-
-
-
-
+module B = Ffi_bindings.Bindings(Ffi_generated)
 module Types = B.T
-(* module Types = (B.T : TYPES with *)
-(*                   type ks_opt_type = B.T.ks_opt_type and *)
-(*                   type ks_struct = B.T.ks_struct and *)
-(*                   type ks_engine = B.T.ks_engine and *)
-(*                   type ks_t = B.T.ks_t and *)
-(*                   type ks_error = B.T.ks_error and *)
-(*                   type ks_opt_value = B.T.ks_opt_value and *)
-(*                   type ks_arch = B.T.ks_arch and *)
-(*                   type ks_mode = B.T.ks_mode  *)
-(*                ) *)
-
-
-
-
-
-       
-
-
-
        
 type asm_result =
   | ASMSuccess of (int array) * int * int
@@ -89,22 +56,24 @@ let ks_errno engine = B.ks_err_ engine
 
 
 let ks_asm engine str addr =
-  let addr1 = Unsigned.UInt64.of_int addr in
-  let addr2 = Unsigned.UInt64.to_int64 addr1 in
+  let addr' = Int64.of_int addr in
   let encoding = allocate_n ~count:1 (ptr uchar) in 
   let encoding_size = allocate size_t (Unsigned.Size_t.of_int 0) in
   let stat_count = allocate size_t (Unsigned.Size_t.of_int 0) in
-  match (B.ks_asm_ engine str addr2 encoding encoding_size stat_count) with
+  match (B.ks_asm_ engine str addr' encoding encoding_size stat_count) with
   | 0 -> begin
-      let f = CArray.from_ptr (!@ encoding) (Unsigned.Size_t.to_int (!@ encoding_size)) in
-      let f' = CArray.to_list f in
-      let f'' = Array.of_list f' in
-      let c' = Array.map (fun c -> Unsigned.UChar.to_int c) f'' in
+      let iencoding_size = Unsigned.Size_t.to_int (!@ encoding_size) in
+      let istat_count = Unsigned.Size_t.to_int (!@ stat_count) in
+      let encodedasm =
+        CArray.from_ptr (!@ encoding) (Unsigned.Size_t.to_int (!@ encoding_size))
+        |> CArray.to_list |> Array.of_list  (* No map in CArray *)
+        |> Array.map (fun c -> Unsigned.UChar.to_int c)
+      in 
       B.ks_free_ (to_voidp (!@ encoding));
-      ASMSuccess(c', (Unsigned.Size_t.to_int (!@ encoding_size)), (Unsigned.Size_t.to_int (!@ stat_count)))
+      ASMSuccess(encodedasm, iencoding_size, istat_count)
     end
-  | _ -> let err = ks_errno engine in
-         ASMError(ks_strerror err)
+  | _ -> let err = ks_errno engine |> ks_strerror  in
+         ASMError err
          
 let asm_array_to_string a =
   Array.fold_left (fun str c -> let t = Printf.sprintf "%02x " c in str^t) "" a 
