@@ -31,23 +31,23 @@ let _ =
   test_ks T.KS_ARCH_ARM T.KS_MODE_THUMB "movs r4, #0xf0";
   test_ks T.KS_ARCH_ARM T.KS_MODE_THUMB ~endian:T.KS_MODE_BIG_ENDIAN "movs r4, #0xf0";
 
-  test_ks KS_ARCH_ARM64 KS_MODE_LITTLE_ENDIAN "ldr w1, [sp, #0x8]";
+  test_ks T.KS_ARCH_ARM64 T.KS_MODE_LITTLE_ENDIAN "ldr w1, [sp, #0x8]";
 
-  test_ks KS_ARCH_HEXAGON KS_MODE_BIG_ENDIAN "v23.w=vavg(v11.w,v2.w):rnd";
+  test_ks T.KS_ARCH_HEXAGON T.KS_MODE_BIG_ENDIAN "v23.w=vavg(v11.w,v2.w):rnd";
 
-  test_ks KS_ARCH_MIPS KS_MODE_MIPS32 "and $9, $6, $7";
-  test_ks KS_ARCH_MIPS KS_MODE_MIPS32 ~endian:KS_MODE_BIG_ENDIAN "and $9, $6, $7";
+  test_ks T.KS_ARCH_MIPS T.KS_MODE_MIPS32 "and $9, $6, $7";
+  test_ks T.KS_ARCH_MIPS T.KS_MODE_MIPS32 ~endian:T.KS_MODE_BIG_ENDIAN "and $9, $6, $7";
 
-  test_ks KS_ARCH_MIPS KS_MODE_MIPS64 "and $9, $6, $7";
-  test_ks KS_ARCH_MIPS KS_MODE_MIPS64 ~endian:KS_MODE_BIG_ENDIAN "and $9, $6, $7";
+  test_ks T.KS_ARCH_MIPS T.KS_MODE_MIPS64 "and $9, $6, $7";
+  test_ks T.KS_ARCH_MIPS T.KS_MODE_MIPS64 ~endian:T.KS_MODE_BIG_ENDIAN "and $9, $6, $7";
 
-  test_ks KS_ARCH_PPC KS_MODE_PPC32 ~endian:KS_MODE_BIG_ENDIAN "add 1,2,3";
-  test_ks KS_ARCH_PPC KS_MODE_PPC64 "add 1,2,3";
-  test_ks KS_ARCH_PPC KS_MODE_PPC64 ~endian:KS_MODE_BIG_ENDIAN "add 1,2,3";
+  test_ks T.KS_ARCH_PPC T.KS_MODE_PPC32 ~endian:T.KS_MODE_BIG_ENDIAN "add 1,2,3";
+  test_ks T.KS_ARCH_PPC T.KS_MODE_PPC64 "add 1,2,3";
+  test_ks T.KS_ARCH_PPC T.KS_MODE_PPC64 ~endian:T.KS_MODE_BIG_ENDIAN "add 1,2,3";
 
-  test_ks KS_ARCH_SPARC KS_MODE_SPARC32 "add %g1, %g2, %g3";
-  test_ks KS_ARCH_SPARC KS_MODE_SPARC32 ~endian:KS_MODE_BIG_ENDIAN "add %g1, %g2, %g3";
+  test_ks T.KS_ARCH_SPARC T.KS_MODE_SPARC32 "add %g1, %g2, %g3";
+  test_ks T.KS_ARCH_SPARC T.KS_MODE_SPARC32 ~endian:T.KS_MODE_BIG_ENDIAN "add %g1, %g2, %g3";
 
-  test_ks KS_ARCH_SYSTEMZ KS_MODE_BIG_ENDIAN "a %r0, 4092(%r15, %r1)";
+  test_ks T.KS_ARCH_SYSTEMZ T.KS_MODE_BIG_ENDIAN "a %r0, 4092(%r15, %r1)";
   ()
     

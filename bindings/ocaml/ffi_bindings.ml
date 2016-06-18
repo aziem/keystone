@@ -6,7 +6,7 @@ module Bindings (F: Cstubs.FOREIGN)  =
     open F 
 
     module T = Ffi_types.Types(Ffi_generated_types)
-
+                        
     let temp = Ffi_generated_types.constant "KS_MODE_BIG_ENDIAN" int64_t 
            
     let ks_arch_supported_ = foreign "ks_arch_supported" (T.ks_arch @-> returning bool)
