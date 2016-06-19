@@ -51,7 +51,7 @@ Executable ffi_stubgen
   Install: false
   Path: .
   MainIs: ffi_stubgen.ml
-  BuildDepends:   keystone_bindings, ffi_types_stubgen
+  BuildDepends:   keystone_bindings
   CompiledObject : native  
 
 Executable test_bindings
